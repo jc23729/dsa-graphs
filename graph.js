@@ -96,6 +96,32 @@ class Graph {
     }
     return result;
   }
+  shortestPath(start, end) {
+    // TODO: implement shortest path
+    if(start === end){
+      return [start.value];
+    }
+
+    var queue = [start];
+    let visited = new Set();
+    let predecessor = {};
+    let path = [];
+
+    while (queue.length) {
+      let currentVertex = queue.shift();
+      
+      if (currentVertex.value === end) {
+        let stop = predecessor[end.value];
+        while(stop){
+          path.push(stop.value);
+          stop = predecessor[stop.value];
+        }
+        path.unshift(start.value);
+         } else {
+        
+    
+    
+}
 }
 
 module.exports = {Graph, Node}
