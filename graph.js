@@ -109,17 +109,26 @@ class Graph {
 
     while (queue.length) {
       let currentVertex = queue.shift();
-      
-      if (currentVertex.value === end) {
-        let stop = predecessor[end.value];
-        while(stop){
-          path.push(stop.value);
-          stop = predecessor[stop.value];
+
+      if (currentVertex === end) {
+        let stop = predecessors[end.value];
+        while (stop) {
+          path.push(stop);
+          stop = predecessors[stop];
         }
         path.unshift(start.value);
-         } else {
-        
-    
+        path.reverse();
+        return path;
+      }
+
+      visited.add(currentVertex);
+      for (let vertex of currentVertex.adjacent) {
+        if (!visited.has(vertex)) {
+          predecessors[vertex.value] = currentVertex.value;
+          queue.push(vertex);
+        }
+      }
+    }
     
 }
 }
