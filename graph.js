@@ -85,9 +85,16 @@ class Graph {
     while (queue.length) {
       currentVertex = queue.shift();
       result.push(currentVertex.value);
-      
+      // visit neighbors
+      currentVertex.adjacent.forEach(neighbor => {
+        if(!visited.has(neighbor)) {
+          visited.add(neighbor);
+          queue.push(neighbor);
+        }
+      });
       
     }
+    return result;
   }
 }
 
