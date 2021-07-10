@@ -74,6 +74,20 @@ class Graph {
   // this function returns an array of Node values using BFS
   breadthFirstSearch(start) {
     //create an queue
+    const queue = [start];
+    const result = [];
+    const visited = new Set();
+    let currentVertex;
+
+    //visit nodes
+    visited.add(start);
+
+    while (queue.length) {
+      currentVertex = queue.shift();
+      result.push(currentVertex.value);
+      
+      
+    }
   }
 }
 
